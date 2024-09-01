@@ -220,4 +220,5 @@ def screenshot_window(hwnd):
     im.save("C:\\Users\\SoVa\\Desktop\\screenshot\\{}{}.png".format(str(score_screenshot[0]), score_screenshot[1]))
     score_screenshot[0] = score_screenshot[0] + 1
 
-main("Название окна")
+if __name__ == '__main__':
+    main("Название окна")
