@@ -24,7 +24,7 @@ def main(name_window):
 
 
 
-
+# кликает в заданные координаты (pywinauto)
 def click_in_window_at_coords(window_title, x, y):
     """
     Кликает в указанную точку (x, y) в окне с заданным заголовком.
@@ -47,7 +47,7 @@ def click_in_window_at_coords(window_title, x, y):
     except Exception as e:
         print(f"Не удалось кликнуть в окне '{window_title}': {e}")
 
-
+# отправляет нажатие стрелочек с выбором каких и сколько раз нажать (pywinauto)
 def send_arrow_keys_to_window(window_title, direction, hits=1):
     """
     Устанавливает фокус на указанное окно и отправляет нажатия клавиш стрелок.
@@ -82,7 +82,7 @@ def send_arrow_keys_to_window(window_title, direction, hits=1):
     except Exception as e:
         print(f"Не удалось отправить стрелки в окно '{window_title}': {e}")
 
-
+# передвигает курсор в заданные координаты (pywinauto)
 def move_mouse_to_window(window_title, x_offset=0, y_offset=0):
     """
     Перемещает курсор мыши к заданным координатам внутри указанного окна и устанавливает на него фокус.
@@ -110,7 +110,7 @@ def move_mouse_to_window(window_title, x_offset=0, y_offset=0):
     except Exception as e:
         print(f"Не удалось переместить курсор в окно '{window_title}': {e}")
 
-
+# скрол с указанием вверх/вниз и насколько (pywinauto)
 def scroll_window(window_title, scroll_amount=1, direction='down'):
     """
     Прокручивает указанное окно вверх или вниз.
@@ -136,7 +136,7 @@ def scroll_window(window_title, scroll_amount=1, direction='down'):
     except Exception as e:
         print(f"Не удалось прокрутить окно '{window_title}': {e}")
 
-
+# наимает на esc (pywinauto)
 def press_escape_in_window(window_title):
     try:
         app = Application(backend="uia").connect(title=window_title)
@@ -150,7 +150,7 @@ def press_escape_in_window(window_title):
     except Exception as e:
         print(f"Не удалось отправить клавишу Esc в окно '{window_title}': {e}")
 
-
+# отправляет текст (pywinauto)
 def send_text_to_window(window_title, text):
     try:
         app = Application(backend="uia").connect(title=window_title)
@@ -164,7 +164,7 @@ def send_text_to_window(window_title, text):
     except Exception as e:
         print(f"Не удалось отправить текст в окно '{window_title}': {e}")
 
-
+# выводит все окна которые открыты на компьютере (pywin32)
 def print_windows(hwnd):
     def enum_windows_callback(hwnd, results):
         if win32gui.IsWindowVisible(hwnd):
@@ -178,7 +178,7 @@ def print_windows(hwnd):
     for hwnd, window_text in windows:
         print(f"HWND: {hwnd}, Title: {window_text}")
 
-
+# возвращает скрытые окна конкретного окна (pywin32)
 def get_inner_windows(whndl):
     def callback(hwnd, hwnds):
         if win32gui.IsWindowVisible(hwnd) and win32gui.IsWindowEnabled(hwnd):
@@ -188,7 +188,7 @@ def get_inner_windows(whndl):
     win32gui.EnumChildWindows(whndl, callback, hwnds)
     return hwnds
 
-
+# делает скриншот конкретного окна и сохраняет в файл (pywin32)
 def screenshot_window(hwnd):
     left, top, right, bot = win32gui.GetWindowRect(hwnd)
     width = right - left
@@ -217,7 +217,7 @@ def screenshot_window(hwnd):
     mfcDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, hwndDC)
 
-    im.save("C:\\Users\\SoVa\\Desktop\\screenshot\\{}{}.png".format(str(score_screenshot[0]), score_screenshot[1]))
+    im.save("Путь".format(str(score_screenshot[0]), score_screenshot[1]))
     score_screenshot[0] = score_screenshot[0] + 1
 
 if __name__ == '__main__':
